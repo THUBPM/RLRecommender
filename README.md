@@ -1,7 +1,7 @@
 # README
-===
 
->1. code\
+1. code\
+
 	1.1. pre-processing\
 		The pre-processing code is written in Java. The pre-processing order is 1) delete invalid processes, 2) transfroming to Petri nets, 3) extracting relations.
 
@@ -64,6 +64,7 @@
 			FIle model.py is the used to train representation learning model and evaluate the trained model (i.e. evaluate our recommendation method).
 
 2. dataset\
+
 	2.1. LRD\
 		You can get LRD from http://bpmai.org/. This is a large real-life dataset. It is only free for academic propose.
 
@@ -93,6 +94,7 @@
 			Each file contains synthetic workflows in matrix format. The elements in the matrix's diagonal denote activity nodes in workflow, while the other elements represent edges in workflows.
 
 3. result\
+
 	Result files are the output of training and recommending files. You can see the training and recommendation process.
 
 	In a result file, RAW means recommendation is done through all activities, FILTER means recommendation is done through all activities except the other correct ones. For example, we have process "a to {b, c, d}", and for activity "b", we will delete "c" and "d" from the candidates in FILTER. (For activity "c", we will delete "b" and "d" from the candidates in FILTER & for activity "d", we will delete "b" and "c" from the candidates in FILTER, respectively.)
