@@ -1,4 +1,7 @@
-1. code\
+# README
+===
+
+>1. code\
 	1.1. pre-processing\
 		The pre-processing code is written in Java. The pre-processing order is 1) delete invalid processes, 2) transfroming to Petri nets, 3) extracting relations.
 
