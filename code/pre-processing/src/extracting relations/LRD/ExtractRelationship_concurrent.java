@@ -487,16 +487,22 @@ public class ExtractRelationship_concurrent {
 							
 							if(nextNextObject1.id.compareTo(nextNextObject2.id) < 0) {
 								if(nextNextObject1.name.compareTo(nextNextObject2.name) <= 0) {
-									if(directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)].equals("neverConcurrent") || directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)].equals(""))
-										directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)] = "neverConcurrent";
-									else
-										directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)] = "sometimesConcurrent";
+									directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)] = "neverConcurrent";
 								} else {
-									if(directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)].equals("neverConcurrent") || directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)].equals(""))
-										directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)] = "neverConcurrent";
-									else
-										directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)] = "sometimesConcurrent";
+									directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)] = "neverConcurrent";
 								}
+								
+//								if(nextNextObject1.name.compareTo(nextNextObject2.name) <= 0) {
+//									if(directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)].equals("neverConcurrent") || directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)].equals(""))
+//										directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)] = "neverConcurrent";
+//									else
+//										directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)] = "sometimesConcurrent";
+//								} else {
+//									if(directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)].equals("neverConcurrent") || directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)].equals(""))
+//										directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)] = "neverConcurrent";
+//									else
+//										directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)] = "sometimesConcurrent";
+//								}
 							}
 						}
 		    		}
@@ -519,23 +525,41 @@ public class ExtractRelationship_concurrent {
 									
 									if(nextObject1.outgoing.size() == 1 && nextObject2.outgoing.size() == 1) {
 										if(nextNextObject1.name.compareTo(nextNextObject2.name) <= 0) {
-											if(directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)].equals("alwaysConcurrent") || directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)].equals(""))
+											if(directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)].equals(""))
 												directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)] = "alwaysConcurrent";
-											else
-												directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)] = "sometimesConcurrent";
 										} else {
-											if(directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)].equals("alwaysConcurrent") || directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)].equals(""))
+											if(directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)].equals(""))
 												directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)] = "alwaysConcurrent";
-											else
-												directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)] = "sometimesConcurrent";
 										}
 									} else {
 										if(nextNextObject1.name.compareTo(nextNextObject2.name) <= 0) {
-											directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)] = "sometimesConcurrent";
+											if(!directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)].equals("neverConcurrent"))
+												directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)] = "sometimesConcurrent";
 										} else {
-											directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)] = "sometimesConcurrent";
+											if(!directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)].equals("neverConcurrent"))
+												directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)] = "sometimesConcurrent";
 										}
 									}
+									
+//									if(nextObject1.outgoing.size() == 1 && nextObject2.outgoing.size() == 1) {
+//										if(nextNextObject1.name.compareTo(nextNextObject2.name) <= 0) {
+//											if(directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)].equals("alwaysConcurrent") || directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)].equals(""))
+//												directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)] = "alwaysConcurrent";
+//											else
+//												directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)] = "sometimesConcurrent";
+//										} else {
+//											if(directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)].equals("alwaysConcurrent") || directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)].equals(""))
+//												directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)] = "alwaysConcurrent";
+//											else
+//												directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)] = "sometimesConcurrent";
+//										}
+//									} else {
+//										if(nextNextObject1.name.compareTo(nextNextObject2.name) <= 0) {
+//											directConcurrent[modelObjectsIndex.get(nextNextObject1.id)][modelObjectsIndex.get(nextNextObject2.id)] = "sometimesConcurrent";
+//										} else {
+//											directConcurrent[modelObjectsIndex.get(nextNextObject2.id)][modelObjectsIndex.get(nextNextObject1.id)] = "sometimesConcurrent";
+//										}
+//									}
 								}
 							}
 						}
@@ -569,35 +593,59 @@ public class ExtractRelationship_concurrent {
 		    			} else if(!directInverseCausal[i][modelObjectsIndex.get(oneObject.id)].equals("") && !directInverseCausal[modelObjectsIndex.get(oneObject.id)][j].equals(""))
 		    				directInverseCausal[i][j] = "directSometimesInverseCausal";
 		    			
+//		    			if((directConcurrent[i][modelObjectsIndex.get(oneObject.id)].equals("alwaysConcurrent") || directConcurrent[modelObjectsIndex.get(oneObject.id)][i].equals("alwaysConcurrent")) && directCausal[modelObjectsIndex.get(oneObject.id)][j].equals("directAlwaysCausal")) {
+//		    				if(modelObjects.get(modelObjectsInverseIndex.get(i)).name.compareTo(modelObjects.get(modelObjectsInverseIndex.get(j)).name) <= 0) {
+//								if(directConcurrent[i][j].equals("alwaysConcurrent") || directConcurrent[i][j].equals(""))
+//									directConcurrent[i][j] = "alwaysConcurrent";
+//								else
+//									directConcurrent[i][j] = "sometimesConcurrent";
+//							} else {
+//								if(directConcurrent[j][i].equals("alwaysConcurrent") || directConcurrent[j][i].equals(""))
+//									directConcurrent[j][i] = "alwaysConcurrent";
+//								else
+//									directConcurrent[j][i] = "sometimesConcurrent";
+//							}
+//		    			} else if((directConcurrent[i][modelObjectsIndex.get(oneObject.id)].equals("neverConcurrent") || directConcurrent[modelObjectsIndex.get(oneObject.id)][i].equals("neverConcurrent")) && !directCausal[modelObjectsIndex.get(oneObject.id)][j].equals("")) {
+//		    				if(modelObjects.get(modelObjectsInverseIndex.get(i)).name.compareTo(modelObjects.get(modelObjectsInverseIndex.get(j)).name) <= 0) {
+//								if(directConcurrent[i][j].equals("neverConcurrent") || directConcurrent[i][j].equals(""))
+//									directConcurrent[i][j] = "neverConcurrent";
+//								else
+//									directConcurrent[i][j] = "sometimesConcurrent";
+//							} else {
+//								if(directConcurrent[j][i].equals("neverConcurrent") || directConcurrent[j][i].equals(""))
+//									directConcurrent[j][i] = "neverConcurrent";
+//								else
+//									directConcurrent[j][i] = "sometimesConcurrent";
+//							}
+//		    			} else if(((directConcurrent[i][modelObjectsIndex.get(oneObject.id)].equals("sometimesConcurrent") || directConcurrent[modelObjectsIndex.get(oneObject.id)][i].equals("sometimesConcurrent")) && !directCausal[modelObjectsIndex.get(oneObject.id)][j].equals("")) || ((directConcurrent[i][modelObjectsIndex.get(oneObject.id)].equals("alwaysConcurrent") || directConcurrent[modelObjectsIndex.get(oneObject.id)][i].equals("alwaysConcurrent")) && directCausal[modelObjectsIndex.get(oneObject.id)][j].equals("directSometimesCausal"))) {
+//		    				if(modelObjects.get(modelObjectsInverseIndex.get(i)).name.compareTo(modelObjects.get(modelObjectsInverseIndex.get(j)).name) <= 0) {
+//								directConcurrent[i][j] = "sometimesConcurrent";
+//							} else {
+//								directConcurrent[j][i] = "sometimesConcurrent";
+//							}
+//		    			}
+		    			
 		    			if((directConcurrent[i][modelObjectsIndex.get(oneObject.id)].equals("alwaysConcurrent") || directConcurrent[modelObjectsIndex.get(oneObject.id)][i].equals("alwaysConcurrent")) && directCausal[modelObjectsIndex.get(oneObject.id)][j].equals("directAlwaysCausal")) {
 		    				if(modelObjects.get(modelObjectsInverseIndex.get(i)).name.compareTo(modelObjects.get(modelObjectsInverseIndex.get(j)).name) <= 0) {
-								if(directConcurrent[i][j].equals("alwaysConcurrent") || directConcurrent[i][j].equals(""))
+								if(directConcurrent[i][j].equals(""))
 									directConcurrent[i][j] = "alwaysConcurrent";
-								else
-									directConcurrent[i][j] = "sometimesConcurrent";
 							} else {
-								if(directConcurrent[j][i].equals("alwaysConcurrent") || directConcurrent[j][i].equals(""))
+								if(directConcurrent[j][i].equals(""))
 									directConcurrent[j][i] = "alwaysConcurrent";
-								else
-									directConcurrent[j][i] = "sometimesConcurrent";
 							}
 		    			} else if((directConcurrent[i][modelObjectsIndex.get(oneObject.id)].equals("neverConcurrent") || directConcurrent[modelObjectsIndex.get(oneObject.id)][i].equals("neverConcurrent")) && !directCausal[modelObjectsIndex.get(oneObject.id)][j].equals("")) {
 		    				if(modelObjects.get(modelObjectsInverseIndex.get(i)).name.compareTo(modelObjects.get(modelObjectsInverseIndex.get(j)).name) <= 0) {
-								if(directConcurrent[i][j].equals("neverConcurrent") || directConcurrent[i][j].equals(""))
-									directConcurrent[i][j] = "neverConcurrent";
-								else
-									directConcurrent[i][j] = "sometimesConcurrent";
+								directConcurrent[i][j] = "neverConcurrent";
 							} else {
-								if(directConcurrent[j][i].equals("neverConcurrent") || directConcurrent[j][i].equals(""))
-									directConcurrent[j][i] = "neverConcurrent";
-								else
-									directConcurrent[j][i] = "sometimesConcurrent";
+								directConcurrent[j][i] = "neverConcurrent";
 							}
 		    			} else if(((directConcurrent[i][modelObjectsIndex.get(oneObject.id)].equals("sometimesConcurrent") || directConcurrent[modelObjectsIndex.get(oneObject.id)][i].equals("sometimesConcurrent")) && !directCausal[modelObjectsIndex.get(oneObject.id)][j].equals("")) || ((directConcurrent[i][modelObjectsIndex.get(oneObject.id)].equals("alwaysConcurrent") || directConcurrent[modelObjectsIndex.get(oneObject.id)][i].equals("alwaysConcurrent")) && directCausal[modelObjectsIndex.get(oneObject.id)][j].equals("directSometimesCausal"))) {
 		    				if(modelObjects.get(modelObjectsInverseIndex.get(i)).name.compareTo(modelObjects.get(modelObjectsInverseIndex.get(j)).name) <= 0) {
-								directConcurrent[i][j] = "sometimesConcurrent";
+		    					if(!directConcurrent[i][j].equals("neverConcurrent"))
+		    						directConcurrent[i][j] = "sometimesConcurrent";
 							} else {
-								directConcurrent[j][i] = "sometimesConcurrent";
+								if(!directConcurrent[j][i].equals("neverConcurrent"))
+									directConcurrent[j][i] = "sometimesConcurrent";
 							}
 		    			}
 		    		}
