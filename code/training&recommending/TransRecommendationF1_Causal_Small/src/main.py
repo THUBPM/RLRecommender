@@ -58,12 +58,14 @@ def main():
         file_object.write('entity norm: {} relation norm: {}'.format(entity_norm, relation_norm) + '\r\n')
         file_object.close()
         summary_writer = tf.summary.FileWriter(logdir=args.summary_dir, graph=sess.graph)
+        saver = tf.train.Saver(max_to_keep=1)
         for epoch in range(args.max_epoch):
             print('=' * 30 + '[EPOCH {}]'.format(epoch) + '=' * 30)
             file_object = open(args.log_file, 'a')
             file_object.write('=' * 30 + '[EPOCH {}]'.format(epoch) + '=' * 30 + '\r\n')
             file_object.close()
             kge_model.launch_training(session=sess, summary_writer=summary_writer)
+            saver.save(sess, '../ckpt/after_small.ckpt', global_step=epoch + 1)
             if (epoch + 1) % args.eval_freq == 0:
                 kge_model.launch_evaluation(session=sess)
 
