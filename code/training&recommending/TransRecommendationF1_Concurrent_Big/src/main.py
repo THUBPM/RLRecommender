@@ -65,7 +65,7 @@ def main():
             file_object.write('=' * 30 + '[EPOCH {}]'.format(epoch) + '=' * 30 + '\r\n')
             file_object.close()
             kge_model.launch_training(session=sess, summary_writer=summary_writer)
-            saver.save(sess, '../ckpt/after_small.ckpt', global_step=epoch + 1)
+            saver.save(sess, '../ckpt/concurrent_big.ckpt', global_step=epoch + 1)
             if (epoch + 1) % args.eval_freq == 0:
                 kge_model.launch_evaluation(session=sess)
 
